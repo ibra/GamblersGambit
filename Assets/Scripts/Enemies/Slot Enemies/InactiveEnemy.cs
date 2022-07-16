@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace Casino.Enemies.Slot
 {
-    public class InactiveSlotEnemy : Enemy
+    public class InactiveEnemy : Enemy
     {
         private bool _settingType;
         private Animator _animator;
 
+        [SerializeField] private string animationTriggerName = "startRoll";
         [SerializeField] private GameObject smokeObject;
         [SerializeField] private GameObject[] enemies;
 
@@ -27,8 +28,9 @@ namespace Casino.Enemies.Slot
         private IEnumerator SetEnemyType()
         {
             _settingType = true;
-            _animator.SetTrigger("startRoll");
-            yield return new WaitForSeconds(0.5f);
+            EnemyManager.AwakeAllEnemies();
+            _animator.SetTrigger(animationTriggerName);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.4f, 0.8f));
             int enemyType = Random.Range(0, 3);
             GetComponent<Collider2D>().enabled = false;
             Instantiate(smokeObject, transform.position, transform.rotation);

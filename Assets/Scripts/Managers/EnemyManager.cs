@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Casino.Enemies.Slot;
 using UnityEngine;
 
 namespace Casino.Enemies
@@ -13,15 +13,14 @@ namespace Casino.Enemies
 
         private void Update()
         {
-            if (EnemiesActive)
-            {
-                
-            }
         }
 
-        public static void AddEnemy(Enemy enemy)
+        public static void AwakeAllEnemies()
         {
-            Enemies.Add(enemy);
+            foreach (Enemy enemy in Enemies)
+            {
+                (enemy as InactiveEnemy)?.TakeDamage(2f);
+            }
         }
     }
 }
