@@ -84,8 +84,7 @@ namespace Casino.Player
         private void UpdateSprite(Vector2 direction)
         {
             float angle = Vector2.SignedAngle(transform.up, direction) * -1;
-            Debug.Log(angle);
-
+            
             if (angle >= 0f && angle <= 45f)
             {
                 _spriteRenderer.sprite = gunSprites[4];
