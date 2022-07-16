@@ -10,7 +10,7 @@ namespace Casino.Combat
 
         private void OnEnable()
         {
-            Destroy(gameObject, 3f); //TODO: remove this
+            Destroy(gameObject, 5f);
         }
 
         private void Update()
@@ -25,8 +25,8 @@ namespace Casino.Combat
                 enemy.TakeDamage(damage);
                 Destroy(gameObject);
             }
-            // if(col.CompareTag("Obstructive"))
-            //     Destroy(gameObject);
+            if(col.CompareTag("Obstructive"))
+                Destroy(gameObject);
         }
     }
 }

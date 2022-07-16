@@ -5,7 +5,6 @@ namespace Casino.Player
     public class PlayerMovement : MonoBehaviour
     {
         private Rigidbody2D _rb;
-        private PlayerGun _playerGun;
         private Vector2 _movementVelocity;
     
         [SerializeField] private float speed;
@@ -15,7 +14,7 @@ namespace Casino.Player
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _playerGun = GetComponentInChildren<PlayerGun>();
+            GetComponentInChildren<PlayerGun>();
         }
 
         private void FixedUpdate()

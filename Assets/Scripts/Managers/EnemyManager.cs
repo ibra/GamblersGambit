@@ -9,6 +9,15 @@ namespace Casino.Enemies
         private Rigidbody2D _rb;
 
         public static List<Enemy> Enemies { get; } = new List<Enemy>();
+        public static bool EnemiesActive;
+
+        private void Update()
+        {
+            if (EnemiesActive)
+            {
+                
+            }
+        }
 
         public static void AddEnemy(Enemy enemy)
         {

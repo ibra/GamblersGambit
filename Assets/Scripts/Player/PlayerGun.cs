@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Casino.Player
@@ -32,6 +33,11 @@ namespace Casino.Player
         [Header("Reloading")] 
         private bool _reloading;
         [SerializeField] private float reloadTime = 2f;
+        
+        [Header("UI")]
+        [SerializeField] private Image[] slotMachineUIImages;
+        [SerializeField] private Animator[] slotMachineUIAnimator;
+        [SerializeField] private Sprite[] fruitSprites;
 
         private void Awake()
         {
@@ -44,45 +50,11 @@ namespace Casino.Player
 
         private void Start()
         {
+            for (int i = 0; i < slotMachineUIAnimator.Length; i++)
+            {
+                slotMachineUIImages[i] = slotMachineUIAnimator[i].transform.GetComponent<Image>();
+            }
             GetRandomBulletType();
-        }
-
-        private void GetRandomBulletType()
-        {
-            string[] possibilities = { "y", "r", "b" };
-            string combination = possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
-
-            int yellowCount = combination.Count(s => s == 'y');
-            int redCount = combination.Count(s => s == 'r');
-            int blueCount = combination.Count(s => s == 'b');
-            Debug.Log(combination);
-            
-            if(yellowCount == 2)
-            {
-                _bulletType = 1;
-            }
-            else if(redCount == 2)
-            {
-                _bulletType = 2;
-            } 
-            else if(blueCount == 2)
-            {
-                _bulletType = 3;
-            }
-            else if (yellowCount == 3)
-            {
-                _bulletType = 4;
-            } else if(redCount == 3)
-            {
-                _bulletType = 5;
-            } else if (blueCount == 3)
-            {
-                _bulletType = 6;
-            }
-            else
-            {
-                _bulletType = 0;
-            }
         }
 
         private void Update()
@@ -118,8 +90,8 @@ namespace Casino.Player
         private IEnumerator Reload()
         {
             _reloading = true;
-            yield return new WaitForSeconds(reloadTime);
             GetRandomBulletType();
+            yield return new WaitForSeconds(reloadTime);
             _bullets = maxBullets;
             _reloading = false;
         }
@@ -131,6 +103,70 @@ namespace Casino.Player
             _direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
             nozzle.up = _direction;
             UpdateSprite(_direction);
+        }
+        
+        private void GetRandomBulletType()
+        {
+            foreach (Animator animator in slotMachineUIAnimator)
+            {
+                animator.enabled = true;
+                animator.SetBool("rolling", true);
+            }
+            string[] possibilities = { "y", "r", "b" };
+            string combination = possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
+
+            int yellowCount = combination.Count(s => s == 'y');
+            int redCount = combination.Count(s => s == 'r');
+            int blueCount = combination.Count(s => s == 'b');
+            StartCoroutine(SetBulletType(yellowCount, redCount, blueCount, combination));
+        }
+
+        private IEnumerator SetBulletType(int yellowCount, int redCount, int blueCount, string arrangement)
+        {
+            yield return new WaitForSeconds(reloadTime);
+            foreach (Animator animator in slotMachineUIAnimator)
+            {
+                animator.SetBool("rolling", false);
+                animator.enabled = false;
+            }
+            if(yellowCount == 2)
+            {
+                _bulletType = 1;
+            }
+            else if(redCount == 2)
+            {
+                _bulletType = 2;
+            } 
+            else if(blueCount == 2)
+            {
+                _bulletType = 3;
+            }
+            else if (yellowCount == 3)
+            {
+                _bulletType = 4;
+            } else if(redCount == 3)
+            {
+                _bulletType = 5;
+            } else if (blueCount == 3)
+            {
+                _bulletType = 6;
+            }
+            else
+            {
+                _bulletType = 0;
+            }
+
+            for (int i = 0; i < slotMachineUIImages.Length; i++)
+            {
+                Image image = slotMachineUIImages[i];
+                image.sprite = arrangement[i] switch
+                {
+                    'y' => fruitSprites[0],
+                    'r' => fruitSprites[1],
+                    'b' => fruitSprites[2],
+                    _ => image.sprite
+                };
+            }
         }
 
         // 0 is 180, 1 is 135, 2 is 90....
