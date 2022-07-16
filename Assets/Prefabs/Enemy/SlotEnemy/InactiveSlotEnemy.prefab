@@ -48,6 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   smokeObject: {fileID: 1020387360846168402, guid: 8034d84dec021c449a485ab70a167a9c, type: 3}
+  enemies:
+  - {fileID: 5897321363412342244, guid: 7340c2f91ad98fb4c91a22e72ce8b5ca, type: 3}
+  - {fileID: 4402070926184993928, guid: becfc358cbd8f3146a636b01ddc0739e, type: 3}
+  - {fileID: 6580798239892557614, guid: 2868e3ca4c210044db1461bf6adbcfe2, type: 3}
 --- !u!61 &5354423294349921179
 BoxCollider2D:
   m_ObjectHideFlags: 0

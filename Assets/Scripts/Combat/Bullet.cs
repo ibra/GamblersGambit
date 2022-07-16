@@ -23,6 +23,7 @@ namespace Casino.Combat
             if (col.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(damage);
+                Destroy(gameObject);
             }
         }
     }

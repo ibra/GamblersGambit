@@ -30,9 +30,17 @@ namespace Casino.Enemies.Slot
             _animator.SetTrigger("startRoll");
             yield return new WaitForSeconds(0.5f);
             int enemyType = Random.Range(0, 3);
+            GetComponent<Collider2D>().enabled = false;
             Instantiate(smokeObject, transform.position, transform.rotation);
+            yield return new WaitForSeconds(0.3f);
             Instantiate(enemies[enemyType], transform.position, transform.rotation);
             Die();
+        }
+
+        public override void Die()
+        {
+            EnemyManager.Enemies.Remove(this);
+            Destroy(gameObject);
         }
     }
 }
