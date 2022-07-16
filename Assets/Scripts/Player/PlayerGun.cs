@@ -48,7 +48,10 @@ namespace Casino.Player
 
         private void GetRandomBulletType()
         {
-            int firstRoll = Random.Range(1, 3);
+            string[] possibilities = { "y", "r", "b" };
+            string combination = "";
+            combination += possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
+            Debug.Log(combination);
         }
 
         private void Update()
@@ -147,12 +150,12 @@ namespace Casino.Player
             else if (angle >= -90f && angle <= -45f)
             {
                 _spriteRenderer.sprite = gunSprites[6];
-                _spriteRenderer.sortingOrder = 5;
+                _spriteRenderer.sortingOrder = -1;
             }
             else if (angle >= -45 && angle < 0f)
             {
                 _spriteRenderer.sprite = gunSprites[5];
-                _spriteRenderer.sortingOrder = 5;
+                _spriteRenderer.sortingOrder = -1;
             }
         }
     }
