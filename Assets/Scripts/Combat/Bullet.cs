@@ -25,6 +25,8 @@ namespace Casino.Combat
                 enemy.TakeDamage(damage);
                 Destroy(gameObject);
             }
+            // if(col.CompareTag("Obstructive"))
+            //     Destroy(gameObject);
         }
     }
 }

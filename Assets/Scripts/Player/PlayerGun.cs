@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -49,9 +50,39 @@ namespace Casino.Player
         private void GetRandomBulletType()
         {
             string[] possibilities = { "y", "r", "b" };
-            string combination = "";
-            combination += possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
+            string combination = possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
+
+            int yellowCount = combination.Count(s => s == 'y');
+            int redCount = combination.Count(s => s == 'r');
+            int blueCount = combination.Count(s => s == 'b');
             Debug.Log(combination);
+            
+            if(yellowCount == 2)
+            {
+                _bulletType = 1;
+            }
+            else if(redCount == 2)
+            {
+                _bulletType = 2;
+            } 
+            else if(blueCount == 2)
+            {
+                _bulletType = 3;
+            }
+            else if (yellowCount == 3)
+            {
+                _bulletType = 4;
+            } else if(redCount == 3)
+            {
+                _bulletType = 5;
+            } else if (blueCount == 3)
+            {
+                _bulletType = 6;
+            }
+            else
+            {
+                _bulletType = 0;
+            }
         }
 
         private void Update()
@@ -72,7 +103,7 @@ namespace Casino.Player
             {
                 if (_bullets > 0)
                 {
-                    GameObject bullet = Instantiate(bulletPrefab[0], nozzle.position, nozzle.rotation);
+                    GameObject bullet = Instantiate(bulletPrefab[_bulletType], nozzle.position, nozzle.rotation);
                     _bullets--;
                 }
                 else if (_bullets <= 0 && !_reloading)
@@ -88,7 +119,7 @@ namespace Casino.Player
         {
             _reloading = true;
             yield return new WaitForSeconds(reloadTime);
-            
+            GetRandomBulletType();
             _bullets = maxBullets;
             _reloading = false;
         }
