@@ -1,5 +1,5 @@
-using System.Linq.Expressions;
-using Unity.Mathematics;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Casino.Player
@@ -9,15 +9,26 @@ namespace Casino.Player
         private Camera _camera;
         private SpriteRenderer _spriteRenderer;
         private Vector2 _direction;
+
+        [Header("Bullets")] 
+        private int _bullets;
+        [SerializeField] private TextMeshProUGUI bulletText;
+        [SerializeField] private int maxBullets;
         
+        [Header("Bullet Instantiation")]
         [SerializeField] private Transform nozzle;
         [SerializeField] private GameObject bulletPrefab;
+        
+        [Header("Gun")]
         [SerializeField] private Sprite[] gunSprites;
-    
 
+        [Header("Reloading")] 
+        private bool _reloading;
+        [SerializeField] private float reloadTime = 2f;
 
         private void Awake()
         {
+            _bullets = maxBullets;
             _camera = Camera.main;
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
@@ -26,15 +37,38 @@ namespace Casino.Player
         {
             HandleRotation();
             HandleShooting();
+            UpdateUserInterface();
+        }
+
+        private void UpdateUserInterface()
+        {
+            bulletText.text = $"{_bullets}/{maxBullets}";
         }
 
         private void HandleShooting()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                GameObject bullet = Instantiate(bulletPrefab, nozzle.position, nozzle.rotation);
-                // bullet.transform.up = _direction;
+                if (_bullets > 0)
+                {
+                    GameObject bullet = Instantiate(bulletPrefab, nozzle.position, nozzle.rotation);
+                    _bullets--;
+                }
+                else if (_bullets <= 0 && !_reloading)
+                {
+                    StartCoroutine(Reload());
+                }
             }
+            if (Input.GetKeyDown(KeyCode.R) && _bullets <= 0 && !_reloading) 
+                StartCoroutine(Reload());
+        }
+
+        private IEnumerator Reload()
+        {
+            _reloading = true;
+            yield return new WaitForSeconds(reloadTime);
+            _bullets = maxBullets;
+            _reloading = false;
         }
 
         private void HandleRotation()
@@ -87,7 +121,6 @@ namespace Casino.Player
             {
                 _spriteRenderer.sprite = gunSprites[5];
             }
-
         }
     }
 }
