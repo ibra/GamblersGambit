@@ -1,24 +1,24 @@
 using Casino.Enemies;
 using UnityEngine;
 
-namespace Casino.Combat
+namespace Casino.Bullets
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float damage = 5f;
-        [SerializeField] private float speed;
+        [SerializeField] protected float damage = 5f;
+        [SerializeField] protected float speed;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             Destroy(gameObject, 5f);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             transform.position += transform.up * (speed * Time.deltaTime);
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        protected virtual void OnTriggerEnter2D(Collider2D col)
         {
             if (col.TryGetComponent(out Enemy enemy))
             {

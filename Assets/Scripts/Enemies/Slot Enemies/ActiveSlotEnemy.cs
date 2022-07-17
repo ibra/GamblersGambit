@@ -20,7 +20,7 @@ namespace Casino.Enemies.Slot
         private void FixedUpdate()
         {
             Vector2 direction = new Vector2(_player.transform.position.x - transform.position.x, _player.transform.position.y - transform.position.y);
-            _rb.MovePosition(_rb.position + direction.normalized * (Time.fixedDeltaTime * speed));
+            _rb.MovePosition((Vector2)transform.position + direction.normalized * Time.deltaTime * speed);
         }
 
         public override void TakeDamage(float damage)

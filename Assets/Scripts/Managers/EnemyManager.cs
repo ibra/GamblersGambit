@@ -11,15 +11,13 @@ namespace Casino.Enemies
         public static List<Enemy> Enemies { get; } = new List<Enemy>();
         public static bool EnemiesActive;
 
-        private void Update()
-        {
-        }
-
         public static void AwakeAllEnemies()
         {
             foreach (Enemy enemy in Enemies)
             {
-                (enemy as InactiveEnemy)?.TakeDamage(2f);
+                InactiveEnemy inactiveEnemy = enemy as InactiveEnemy;
+                if(inactiveEnemy != null)
+                    inactiveEnemy.TakeDamage(2f);
             }
         }
     }

@@ -495,8 +495,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7274139216911986784}
-  - component: {fileID: 7274139216911986785}
+  - component: {fileID: 8002839435963478953}
   - component: {fileID: 7274139216911986782}
+  - component: {fileID: 7274139216911986785}
   - component: {fileID: 7274139216911986783}
   m_Layer: 0
   m_Name: Player
@@ -522,6 +523,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8002839435963478953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274139216911986787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a4fb709199ca54f99577ead09777ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+--- !u!114 &7274139216911986782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274139216911986787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47287193791b9354d820d291dbe4240a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  playerSprites:
+  - {fileID: -184227384571175398, guid: 19bce8bb2a998184cad69e161e470bc0, type: 3}
+  - {fileID: 6221534257167143075, guid: 6dbe2072001b0a64fbf9b3c28b892cd2, type: 3}
+  - {fileID: -7552010211414192184, guid: 2c04344b8a4559f4db5cfb520363afad, type: 3}
+  - {fileID: 8399238009096881873, guid: 88f2655ed7f950842ba181d3e97e9db2, type: 3}
 --- !u!50 &7274139216911986785
 Rigidbody2D:
   serializedVersion: 4
@@ -543,24 +575,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7274139216911986782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274139216911986787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47287193791b9354d820d291dbe4240a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  playerSprites:
-  - {fileID: -184227384571175398, guid: 19bce8bb2a998184cad69e161e470bc0, type: 3}
-  - {fileID: 6221534257167143075, guid: 6dbe2072001b0a64fbf9b3c28b892cd2, type: 3}
-  - {fileID: -7552010211414192184, guid: 2c04344b8a4559f4db5cfb520363afad, type: 3}
-  - {fileID: 8399238009096881873, guid: 88f2655ed7f950842ba181d3e97e9db2, type: 3}
 --- !u!61 &7274139216911986783
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7e9568a99b33145ac963dcf47f68cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
+  animationTriggerName: startRoll
   smokeObject: {fileID: 1020387360846168402, guid: 8034d84dec021c449a485ab70a167a9c, type: 3}
   enemies:
   - {fileID: 5897321363412342244, guid: 7340c2f91ad98fb4c91a22e72ce8b5ca, type: 3}
