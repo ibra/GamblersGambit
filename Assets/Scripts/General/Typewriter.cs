@@ -34,7 +34,7 @@ namespace YourShot.Utilities
         {
 
             _sentenceText.maxVisibleCharacters = 0;
-            foreach (char letter in _sentenceText.text.ToCharArray())
+            foreach (char letter in _sentenceText.text)
             {
                 _sentenceText.maxVisibleCharacters += lettersEachIteration;
                 if (letter != ' ' && _usingSounds)
