@@ -1,3 +1,5 @@
+using System;
+using Casino.Player;
 using UnityEngine;
 
 namespace Casino.Enemies.Slot
@@ -29,11 +31,20 @@ namespace Casino.Enemies.Slot
             if(_health <= 0)
                 Die();
         }
-
+        
         public override void Die()
         {
             EnemyManager.Enemies.Remove(this);
             Destroy(gameObject);
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.CompareTag("Player"))
+            {
+                _player.GetComponent<PlayerHealth>().TakeDamage(damage);
+                Die();
+            }
         }
     }
 }

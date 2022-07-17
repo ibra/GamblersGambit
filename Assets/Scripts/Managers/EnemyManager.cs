@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Casino.Enemies.Slot;
 using UnityEngine;
@@ -7,9 +8,14 @@ namespace Casino.Enemies
     public class EnemyManager : MonoBehaviour
     {
         private Rigidbody2D _rb;
-
+        [SerializeField] private Barrier barrier;
         public static List<Enemy> Enemies { get; } = new List<Enemy>();
-        public static bool EnemiesActive;
+
+        private void Update()
+        {
+            if(!barrier.isOpen)
+                barrier.Open();
+        }
 
         public static void AwakeAllEnemies()
         {
