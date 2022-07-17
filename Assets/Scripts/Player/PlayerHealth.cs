@@ -11,6 +11,7 @@ namespace Casino.Player
 
         [SerializeField] private Image healthBar;
         [SerializeField] private float maxHealth = 30f;
+        [SerializeField] private GameObject gameOverScreen;
         
         private void Start()
         {
@@ -29,7 +30,8 @@ namespace Casino.Player
 
         private void Die()
         {
-           Debug.Log("Dead");
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }

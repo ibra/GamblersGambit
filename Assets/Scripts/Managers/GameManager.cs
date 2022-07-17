@@ -9,7 +9,14 @@ namespace Casino
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                Time.timeScale = 1f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(0);
             }
         }
     }
