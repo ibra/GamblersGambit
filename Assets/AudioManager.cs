@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Casino.Audio
 {
@@ -15,6 +16,17 @@ namespace Casino.Audio
             else
             {
                 Destroy(gameObject);
+            }
+            SceneManager.sceneLoaded += CheckForMenu;
+        }
+
+        private void CheckForMenu(Scene scene, LoadSceneMode mode)
+        {
+            if(scene.buildIndex == 0)
+                GetComponent<AudioSource>().Stop();
+            else
+            {
+                GetComponent<AudioSource>().Play();
             }
         }
     }

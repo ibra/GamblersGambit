@@ -1,6 +1,7 @@
 using System;
 using Casino.Enemies;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Casino.Bullets
 {
@@ -9,7 +10,8 @@ namespace Casino.Bullets
         private bool _doingSplash; 
         
         [SerializeField] private float lifetime = 2f;
-        
+        [SerializeField] private GameObject blueExplosion;
+
         protected override void Update()
         {
             if(!_doingSplash)
@@ -34,8 +36,10 @@ namespace Casino.Bullets
         private void DoSplashDamage()
         {
             _doingSplash = true;
-            transform.Find("aoe").gameObject.SetActive(true);
-            Collider2D[] collidedObjects = Physics2D.OverlapCircleAll((Vector2)transform.position, 1.5f);
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            var explosion = Instantiate(blueExplosion, transform.position, Quaternion.identity);
+            Destroy(explosion, 0.5f);
+            Collider2D[] collidedObjects = Physics2D.OverlapCircleAll(transform.position, 1.5f);
             foreach (Collider2D collider in collidedObjects)
             {
                 if (collider.TryGetComponent(out Enemy splashEnemy))
