@@ -133,9 +133,9 @@ MonoBehaviour:
   animationTriggerName: startSpin
   smokeObject: {fileID: 1020387360846168402, guid: 8034d84dec021c449a485ab70a167a9c, type: 3}
   enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4481237192054987120, guid: 75a0d032e56c7b7439018d09ad295920, type: 3}
+  - {fileID: 4481237192054987120, guid: ef74ab29dfe1e4b4baf100fae3087f10, type: 3}
+  - {fileID: 4481237192054987120, guid: 2f1d2eafdaeb0224ca52532c78939d04, type: 3}
 --- !u!61 &2925295450601464736
 BoxCollider2D:
   m_ObjectHideFlags: 0

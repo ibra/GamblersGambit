@@ -7,10 +7,8 @@ namespace Casino
     public enum HeartType
     {
         EMPTY = 0,
-        QUARTER_25 = 1,
-        HALF = 2,
-        QUARTER_75 = 3,
-        FULL = 4,
+        HALF = 1,
+        FULL = 2,
     }
     
     public class HeartHealth : MonoBehaviour
@@ -28,10 +26,8 @@ namespace Casino
             _heart.sprite = heartType switch
             {
                 HeartType.FULL => healthQuarters[0],
-                HeartType.QUARTER_75 => healthQuarters[1],
-                HeartType.HALF => healthQuarters[2],
-                HeartType.QUARTER_25 => healthQuarters[3],
-                HeartType.EMPTY => healthQuarters[4],
+                HeartType.HALF => healthQuarters[1],
+                HeartType.EMPTY => healthQuarters[2],
                 _ => throw new ArgumentOutOfRangeException(nameof(heartType), heartType, null)
             };
         }

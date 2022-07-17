@@ -5,8 +5,8 @@ namespace Casino.Bullets
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] protected float damage = 5f;
-        [SerializeField] protected float speed;
+        [SerializeField] public float damage = 5f;
+        [SerializeField] public float speed;
 
         protected virtual void OnEnable()
         {

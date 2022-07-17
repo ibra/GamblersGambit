@@ -11,7 +11,7 @@ namespace Casino.Enemies
         [SerializeField] protected float damage;
         [SerializeField] protected float maxHealth;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Health = maxHealth;
             EnemyManager.Enemies.Add(this);

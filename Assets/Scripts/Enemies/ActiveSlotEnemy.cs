@@ -9,6 +9,11 @@ namespace Casino.Enemies.Slot
         private Rigidbody2D _rb;
         [SerializeField] private float speed = 5f;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _rb = GetComponent<Rigidbody2D>();
+        }
         private void FixedUpdate()
         {
             Vector2 direction = new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y);

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  maxHealth: 30
+  maxHealth: 35
   speed: 0.7
 --- !u!50 &3697069424574145208
 Rigidbody2D:

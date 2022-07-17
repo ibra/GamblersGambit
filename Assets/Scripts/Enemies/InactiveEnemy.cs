@@ -12,8 +12,9 @@ namespace Casino.Enemies.Slot
         [SerializeField] private GameObject smokeObject;
         [SerializeField] private GameObject[] enemies;
 
-        private void Start()
+        protected override void Start()
         {
+            //if this becomes broken call base.Start();
             _animator = GetComponent<Animator>();
         }
 

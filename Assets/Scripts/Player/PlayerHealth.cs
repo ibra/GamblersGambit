@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,33 +8,21 @@ namespace Casino.Player
     public class PlayerHealth : MonoBehaviour
     {
         private float _health;
-        private HeartHealth[] healthImages;
 
-        [SerializeField] private GameObject healthBar;
+        [SerializeField] private Image healthBar;
         [SerializeField] private float maxHealth = 30f;
         
         private void Start()
         {
             _health = maxHealth;
-            healthImages = healthBar.GetComponentsInChildren<HeartHealth>();
+            healthBar.fillAmount = _health / maxHealth;
         }
-
-        private void Update()
-        {
-            for (int i = 0; i < healthImages.Length; i++)
-            {
-                int heartStatusRemainder = (int)Mathf.Clamp(_health - (i * 4), 0, 4);
-                healthImages[i].SetHeart((HeartType)heartStatusRemainder);
-            }
-        }
-
-
+        
 
         public void TakeDamage(float damage)
         {
-            Debug.Log(damage);
             _health -= damage;
-
+            healthBar.fillAmount = _health / maxHealth;
             if (_health <= 0)
                 Die();
         }
