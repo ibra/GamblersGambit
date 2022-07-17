@@ -298,8 +298,8 @@ MonoBehaviour:
   - {fileID: 5335997145801032325, guid: b49a51c1ff0870d4e90d476b2a125d40, type: 3}
   - {fileID: 5335997145801032325, guid: 7cda5963625cc8a479e6b3605e34dbc0, type: 3}
   - {fileID: 5335997145801032325, guid: 6740282ca4c277b49a3636962aacc116, type: 3}
-  - {fileID: 5335997145801032325, guid: 6740282ca4c277b49a3636962aacc116, type: 3}
-  - {fileID: 5335997145801032325, guid: 6740282ca4c277b49a3636962aacc116, type: 3}
+  - {fileID: 5335997145801032325, guid: b49a51c1ff0870d4e90d476b2a125d40, type: 3}
+  - {fileID: 5335997145801032325, guid: 7cda5963625cc8a479e6b3605e34dbc0, type: 3}
   - {fileID: 5335997145801032325, guid: 6740282ca4c277b49a3636962aacc116, type: 3}
   gunSprites:
   - {fileID: 3206308105732406468, guid: d294810b75d212d4ca82adab751687df, type: 3}
@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 7274139216911986782}
   - component: {fileID: 7274139216911986785}
   - component: {fileID: 7274139216911986783}
+  - component: {fileID: 7274139216007580608}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -754,6 +755,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6685746, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &7274139216007580608
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274139216911986787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d40e3f69c74b3746b46d3e48f0f45ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7274139216920546499
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +844,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: -9183663136501380013, guid: d294810b75d212d4ca82adab751687df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1127,7 +1147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -184227384571175398, guid: 19bce8bb2a998184cad69e161e470bc0, type: 3}
+  m_Sprite: {fileID: -7552010211414192184, guid: 2c04344b8a4559f4db5cfb520363afad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

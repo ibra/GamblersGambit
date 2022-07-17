@@ -11,13 +11,16 @@ namespace Casino
         public void Open()
         {
             isOpen = true;
-            GetComponent<Collider2D>().enabled = true;
+            GetComponent<Collider2D>().isTrigger = true;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-           if(col.CompareTag("Player") && isOpen) 
+            Debug.Log(col.name);
+            if (col.CompareTag("Player") && isOpen)
+            {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
