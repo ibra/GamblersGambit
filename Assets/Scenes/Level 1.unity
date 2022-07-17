@@ -234,7 +234,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 025517735091f2c4bb0e4ad4cb3be817, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5e8244c0833ef0e47a466d07d0d37478, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
@@ -3215,14 +3215,6 @@ PrefabInstance:
     - target: {fileID: 4643401077161559460, guid: 54916490ca3064f4aa78e79d2be43d3e, type: 3}
       propertyPath: m_Name
       value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 4643401077161559462, guid: 54916490ca3064f4aa78e79d2be43d3e, type: 3}
-      propertyPath: m_UpscaleRT
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4643401077161559462, guid: 54916490ca3064f4aa78e79d2be43d3e, type: 3}
-      propertyPath: m_CropFrameX
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4643401077161559463, guid: 54916490ca3064f4aa78e79d2be43d3e, type: 3}
       propertyPath: m_ForceIntoRT
