@@ -32,6 +32,7 @@ namespace Casino.Player
 
         [Header("Reloading")] 
         private bool _reloading;
+        [SerializeField] private AudioSource reloadSound;
         [SerializeField] private float reloadTime = 2f;
         
         [Header("UI")]
@@ -83,14 +84,13 @@ namespace Casino.Player
                     StartCoroutine(Reload());
                 }
             }
-            if (Input.GetKeyDown(KeyCode.R) && _bullets <= 0 && !_reloading) 
-                StartCoroutine(Reload());
         }
 
         private IEnumerator Reload()
         {
             _reloading = true;
             GetRandomBulletType();
+            reloadSound.Play();
             yield return new WaitForSeconds(reloadTime);
             _bullets = maxBullets;
             _reloading = false;

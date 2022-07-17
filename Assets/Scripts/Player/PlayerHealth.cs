@@ -8,9 +8,10 @@ namespace Casino.Player
     public class PlayerHealth : MonoBehaviour
     {
         private float _health;
-
+    
         [SerializeField] private Image healthBar;
         [SerializeField] private float maxHealth = 30f;
+        [SerializeField] private AudioSource damageSound;
         [SerializeField] private GameObject gameOverScreen;
         
         private void Start()
@@ -23,6 +24,8 @@ namespace Casino.Player
         public void TakeDamage(float damage)
         {
             _health -= damage;
+            if(!damageSound.isPlaying)
+                damageSound.Play();
             healthBar.fillAmount = _health / maxHealth;
             if (_health <= 0)
                 Die();

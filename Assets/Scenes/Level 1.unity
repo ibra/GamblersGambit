@@ -450,17 +450,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022088133, guid: 2af09a97c62075540b5194367c061c01, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3486858787140809644, guid: 2af09a97c62075540b5194367c061c01, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3486858787140809644, guid: 2af09a97c62075540b5194367c061c01, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3486858787140809644, guid: 2af09a97c62075540b5194367c061c01, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3486858787140809644, guid: 2af09a97c62075540b5194367c061c01, type: 3}
       propertyPath: m_LocalPosition.x
