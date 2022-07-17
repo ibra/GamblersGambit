@@ -9,7 +9,12 @@ namespace Casino.Enemies
     {
         private Rigidbody2D _rb;
         [SerializeField] private Barrier barrier;
-        public static List<Enemy> Enemies { get; } = new List<Enemy>();
+        public static List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+
+        private void Awake()
+        {
+            Enemies = new List<Enemy>();
+        }
 
         private void Update()
         {

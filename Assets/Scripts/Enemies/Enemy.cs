@@ -14,12 +14,12 @@ namespace Casino.Enemies
         protected virtual void Awake()
         {
             Health = maxHealth;
-            EnemyManager.Enemies.Add(this);
         }
 
         protected virtual void Start()
         {
             Player = GameObject.FindWithTag("Player");
+            EnemyManager.Enemies.Add(this);
         }
 
         public virtual void Die()

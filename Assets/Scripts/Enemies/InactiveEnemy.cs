@@ -14,7 +14,7 @@ namespace Casino.Enemies.Slot
 
         protected override void Start()
         {
-            //if this becomes broken call base.Start();
+            base.Start();
             _animator = GetComponent<Animator>();
         }
 
