@@ -26,7 +26,8 @@ namespace Casino.Audio
                 GetComponent<AudioSource>().Stop();
             else
             {
-                GetComponent<AudioSource>().Play();
+                if(!GetComponent<AudioSource>().isPlaying)
+                    GetComponent<AudioSource>().Play();
             }
         }
     }
