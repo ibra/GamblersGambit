@@ -13,7 +13,7 @@ namespace Casino.Player
         private SpriteRenderer _spriteRenderer;
 
         private PlayerMovement _playerMovement;
-        private SpriteRenderer _playerSpriteRenderer;
+        private Animator _playerAnimator;
  
         private Vector2 _direction;
 
@@ -44,7 +44,7 @@ namespace Casino.Player
             _bullets = maxBullets;
             _camera = Camera.main;
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            _playerSpriteRenderer = transform.parent.Find("Sprite").GetComponent<SpriteRenderer>();
+            _playerAnimator = transform.parent.GetComponent<Animator>();
             _playerMovement = GetComponentInParent<PlayerMovement>();
         }
 
@@ -176,41 +176,41 @@ namespace Casino.Player
             
             if (angle >= 0f && angle <= 45f)
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[0];
+                _playerAnimator.SetInteger("Direction", 1);
                 _spriteRenderer.sprite = gunSprites[4];
                 _spriteRenderer.sortingOrder = -1;
             } 
             else if(angle >= 45f && angle <= 90f)
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[0];
+                _playerAnimator.SetInteger("Direction", 1);
                 _spriteRenderer.sprite = gunSprites[3];
                 _spriteRenderer.sortingOrder = -1;
             } 
             else if (angle >= 90f && angle <= 135f)
             {
                 _spriteRenderer.sprite = gunSprites[2];
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[1];
+                _playerAnimator.SetInteger("Direction", 2);
                 _spriteRenderer.sortingOrder = 5;
             } else if (angle >= 135 && angle <= 175)
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[2];
+                _playerAnimator.SetInteger("Direction", -1);
                 _spriteRenderer.sprite = gunSprites[1];
                 _spriteRenderer.sortingOrder = 5;
             }
             else if ((angle >= 175 && angle <= 180)|| (angle >= -175  && angle <= -179))
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[2];
+                _playerAnimator.SetInteger("Direction", -1);
                 _spriteRenderer.sortingOrder = 5;
             }
             else if (angle >= -135 && angle <= -175)
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[3];
+                _playerAnimator.SetInteger("Direction", -2);
                 _spriteRenderer.sprite = gunSprites[6]; //c
                 _spriteRenderer.sortingOrder = -1;
             }
             else if (angle >= -135 && angle <= -90f)
             {
-                _playerSpriteRenderer.sprite = _playerMovement.playerSprites[3];
+                _playerAnimator.SetInteger("Direction", -2);
                 _spriteRenderer.sprite = gunSprites[7];
                 _spriteRenderer.sortingOrder = -1;
             }
