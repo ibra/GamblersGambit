@@ -2738,6 +2738,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7274139215743456431, guid: e346d2e53d31096488e84f2bb77ebd9a, type: 3}
+      propertyPath: bulletPrefab.Array.data[4]
+      value: 
+      objectReference: {fileID: 5335997145801032325, guid: b49a51c1ff0870d4e90d476b2a125d40, type: 3}
+    - target: {fileID: 7274139215743456431, guid: e346d2e53d31096488e84f2bb77ebd9a, type: 3}
+      propertyPath: bulletPrefab.Array.data[5]
+      value: 
+      objectReference: {fileID: 5335997145801032325, guid: 7cda5963625cc8a479e6b3605e34dbc0, type: 3}
     - target: {fileID: 7274139216911986784, guid: e346d2e53d31096488e84f2bb77ebd9a, type: 3}
       propertyPath: m_RootOrder
       value: 3

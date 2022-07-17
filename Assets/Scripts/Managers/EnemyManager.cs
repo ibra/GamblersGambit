@@ -13,7 +13,7 @@ namespace Casino.Enemies
 
         private void Update()
         {
-            if(!barrier.isOpen && Enemies.Count == 0)
+            if(Enemies.Count == 0)
                 barrier.Open();
             else if (Enemies.Count > 0)
                 barrier.isOpen = false;
