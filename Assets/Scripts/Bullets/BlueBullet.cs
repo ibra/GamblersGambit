@@ -37,8 +37,8 @@ namespace Casino.Bullets
         {
             _doingSplash = true;
             GetComponentInChildren<SpriteRenderer>().enabled = false;
-            var explosion = Instantiate(blueExplosion, transform.position, Quaternion.identity);
-            Destroy(explosion, 0.5f);
+            GameObject explosion = Instantiate(blueExplosion, transform.position, Quaternion.identity);
+            Destroy(explosion, 0.8f);
             Collider2D[] collidedObjects = Physics2D.OverlapCircleAll(transform.position, 1.5f);
             foreach (Collider2D collider in collidedObjects)
             {
