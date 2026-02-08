@@ -7,6 +7,7 @@ namespace Casino.Player
         private Rigidbody2D _rb;
         private Animator _animator;
 
+        [SerializeField] private PlayerGun gun;
         [SerializeField] private float speed;
 
         private Vector2 _input;
@@ -42,14 +43,23 @@ namespace Casino.Player
             _rb.MovePosition(_rb.position + _input * speed * Time.fixedDeltaTime);
         }
 
+        //private void UpdateAnimator()
+        //{
+
+        //    if (_input != Vector2.zero)
+        //        _lastDirection = _input;
+
+        //    _animator.SetFloat("MoveX", _lastDirection.x);
+        //    _animator.SetFloat("MoveY", _lastDirection.y);
+        //    _animator.SetFloat("Speed", _input.sqrMagnitude);
+        //}
+
         private void UpdateAnimator()
         {
+            Vector2 facing = gun.AimDirection;
 
-            if (_input != Vector2.zero)
-                _lastDirection = _input;
-
-            _animator.SetFloat("MoveX", _lastDirection.x);
-            _animator.SetFloat("MoveY", _lastDirection.y);
+            _animator.SetFloat("MoveX", facing.x);
+            _animator.SetFloat("MoveY", facing.y);
             _animator.SetFloat("Speed", _input.sqrMagnitude);
         }
     }

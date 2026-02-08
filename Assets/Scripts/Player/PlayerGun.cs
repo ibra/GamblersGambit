@@ -37,6 +37,8 @@ namespace Casino.Player
         [SerializeField] private Animator[] slotMachineUIAnimator;
         [SerializeField] private Sprite[] fruitSprites;
 
+        public Vector2 AimDirection => _direction.normalized;
+
         private void Awake()
         {
             _bullets = maxBullets;
