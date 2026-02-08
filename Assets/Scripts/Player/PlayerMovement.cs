@@ -5,33 +5,52 @@ namespace Casino.Player
     public class PlayerMovement : MonoBehaviour
     {
         private Rigidbody2D _rb;
-        private Vector2 _movementVelocity;
         private Animator _animator;
-    
+
         [SerializeField] private float speed;
 
-        public Sprite[] playerSprites;
-        
-        private void Start()
+        private Vector2 _input;
+        private Vector2 _lastDirection = Vector2.zero;
+
+        private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-            GetComponentInChildren<PlayerGun>();
+        }
+
+        private void Update()
+        {
+            ReadInput();
+            UpdateAnimator();
         }
 
         private void FixedUpdate()
         {
-            HandleMovement();
+            Move();
         }
-        
 
-        private void HandleMovement()
+        private void ReadInput()
         {
-            Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            _animator.SetFloat("Input", moveInput.x + moveInput.y);
-            _movementVelocity = moveInput * speed;
-            _rb.MovePosition(_rb.position + _movementVelocity * Time.deltaTime);
+            _input = new Vector2(
+                Input.GetAxisRaw("Horizontal"),
+                Input.GetAxisRaw("Vertical")
+            ).normalized;
+        }
+
+        private void Move()
+        {
+            _rb.MovePosition(_rb.position + _input * speed * Time.fixedDeltaTime);
+        }
+
+        private void UpdateAnimator()
+        {
+
+            if (_input != Vector2.zero)
+                _lastDirection = _input;
+
+            _animator.SetFloat("MoveX", _lastDirection.x);
+            _animator.SetFloat("MoveY", _lastDirection.y);
+            _animator.SetFloat("Speed", _input.sqrMagnitude);
         }
     }
 }
-

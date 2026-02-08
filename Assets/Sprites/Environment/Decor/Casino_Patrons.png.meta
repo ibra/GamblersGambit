@@ -126,7 +126,7 @@ TextureImporter:
       213: 6664319400257031307
     second: Casino_Patrons_40
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -143,10 +143,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -156,8 +158,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -185,6 +187,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -196,6 +200,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -208,6 +213,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -220,6 +226,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1096,9 +1103,50 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Casino_Patrons_0: -3724433272965541259
+      Casino_Patrons_1: 7897636236581791919
+      Casino_Patrons_10: -7657127483810060037
+      Casino_Patrons_11: -7844814382573137724
+      Casino_Patrons_12: -283042637954139993
+      Casino_Patrons_13: 7549810387092035820
+      Casino_Patrons_14: 1440554993885675379
+      Casino_Patrons_15: -2891938247367314513
+      Casino_Patrons_16: 8199013307996180808
+      Casino_Patrons_17: -2025302966594957666
+      Casino_Patrons_18: 9219801284725946069
+      Casino_Patrons_19: 5479201764755169340
+      Casino_Patrons_2: -526057265975571338
+      Casino_Patrons_20: -194600516147522775
+      Casino_Patrons_21: 8024538170715110605
+      Casino_Patrons_22: 1624059139826161359
+      Casino_Patrons_23: 67745603483366059
+      Casino_Patrons_24: 3819143570698123188
+      Casino_Patrons_25: 1517110106122634521
+      Casino_Patrons_26: 5443744656724881309
+      Casino_Patrons_27: 6953014302408558282
+      Casino_Patrons_28: 7794766520670418924
+      Casino_Patrons_29: -4381302414959178890
+      Casino_Patrons_3: -670567540803239055
+      Casino_Patrons_30: -6856883278639546877
+      Casino_Patrons_31: -3264527775102952163
+      Casino_Patrons_32: -2577050230116574513
+      Casino_Patrons_33: 2743892897835691002
+      Casino_Patrons_34: 7297961673320638781
+      Casino_Patrons_35: 7516102514913102484
+      Casino_Patrons_36: -944958968141147189
+      Casino_Patrons_37: 1066605223517015262
+      Casino_Patrons_38: 9112809628847040916
+      Casino_Patrons_39: -8947895949450564921
+      Casino_Patrons_4: 412784969778511721
+      Casino_Patrons_40: 6664319400257031307
+      Casino_Patrons_5: -5119696018282611785
+      Casino_Patrons_6: 5745981550937169364
+      Casino_Patrons_7: 5499640679263554902
+      Casino_Patrons_8: -5978730975266230539
+      Casino_Patrons_9: -6895906379985533506
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

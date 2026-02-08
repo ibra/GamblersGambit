@@ -11,9 +11,6 @@ namespace Casino.Player
     {
         private Camera _camera;
         private SpriteRenderer _spriteRenderer;
-
-        private PlayerMovement _playerMovement;
-        private Animator _playerAnimator;
  
         private Vector2 _direction;
 
@@ -45,8 +42,6 @@ namespace Casino.Player
             _bullets = maxBullets;
             _camera = Camera.main;
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            _playerAnimator = transform.parent.GetComponent<Animator>();
-            _playerMovement = GetComponentInParent<PlayerMovement>();
         }
 
         private void Start()
@@ -168,62 +163,36 @@ namespace Casino.Player
                 };
             }
         }
-
-        // 0 is 180, 1 is 135, 2 is 90....
         private void UpdateSprite(Vector2 direction)
         {
-            float angle = Vector2.SignedAngle(transform.up, direction) * -1;
-            
-            if (angle >= 0f && angle <= 45f)
-            {
-                _playerAnimator.SetInteger("Direction", 1);
-                _spriteRenderer.sprite = gunSprites[4];
-                _spriteRenderer.sortingOrder = -1;
-            } 
-            else if(angle >= 45f && angle <= 90f)
-            {
-                _playerAnimator.SetInteger("Direction", 1);
-                _spriteRenderer.sprite = gunSprites[3];
-                _spriteRenderer.sortingOrder = -1;
-            } 
-            else if (angle >= 90f && angle <= 135f)
-            {
-                _spriteRenderer.sprite = gunSprites[2];
-                _playerAnimator.SetInteger("Direction", 2);
-                _spriteRenderer.sortingOrder = 5;
-            } else if (angle >= 135 && angle <= 175)
-            {
-                _playerAnimator.SetInteger("Direction", -1);
-                _spriteRenderer.sprite = gunSprites[1];
-                _spriteRenderer.sortingOrder = 5;
-            }
-            else if ((angle >= 175 && angle <= 180)|| (angle >= -175  && angle <= -179))
-            {
-                _playerAnimator.SetInteger("Direction", -1);
-                _spriteRenderer.sortingOrder = 5;
-            }
-            else if (angle >= -135 && angle <= -175)
-            {
-                _playerAnimator.SetInteger("Direction", -2);
-                _spriteRenderer.sprite = gunSprites[6]; //c
-                _spriteRenderer.sortingOrder = -1;
-            }
-            else if (angle >= -135 && angle <= -90f)
-            {
-                _playerAnimator.SetInteger("Direction", -2);
-                _spriteRenderer.sprite = gunSprites[7];
-                _spriteRenderer.sortingOrder = -1;
-            }
-            else if (angle >= -90f && angle <= -45f)
-            {
-                _spriteRenderer.sprite = gunSprites[6];
-                _spriteRenderer.sortingOrder = -1;
-            }
-            else if (angle >= -45 && angle < 0f)
-            {
-                _spriteRenderer.sprite = gunSprites[5];
-                _spriteRenderer.sortingOrder = -1;
-            }
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle = (angle + 360f) % 360f;
+
+            Sprite sprite = null;
+            int order = 0;
+
+            if (angle >= 337.5f || angle < 22.5f)       // Right
+                sprite = gunSprites[0];
+            else if (angle < 67.5f)                     // Up-Right
+                sprite = gunSprites[1];
+            else if (angle < 112.5f)                    // Up
+                sprite = gunSprites[2];
+            else if (angle < 157.5f)                    // Up-Left
+                sprite = gunSprites[3];
+            else if (angle < 202.5f)                    // Left
+                sprite = gunSprites[4];
+            else if (angle < 247.5f)                    // Down-Left
+                sprite = gunSprites[5];
+            else if (angle < 292.5f)                    // Down
+                sprite = gunSprites[6];
+            else                                        // Down-Right
+                sprite = gunSprites[7];
+
+            //order = (angle >= 67.5f && angle <= 247.5f) ? 5 : -1;
+            //_spriteRenderer.sortingOrder = order;
+
+            _spriteRenderer.sprite = sprite;
+
         }
     }
 }
