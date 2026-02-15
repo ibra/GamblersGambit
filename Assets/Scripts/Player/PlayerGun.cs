@@ -11,27 +11,27 @@ namespace Casino.Player
     {
         private Camera _camera;
         private SpriteRenderer _spriteRenderer;
- 
+
         private Vector2 _direction;
 
-        [Header("Bullets")] 
+        [Header("Bullets")]
         private int _bullets;
         [SerializeField] private TextMeshProUGUI bulletText;
         [SerializeField] private int maxBullets;
         [SerializeField] public Transform nozzle;
-        
-        [Header("Bullet Randomness")] 
+
+        [Header("Bullet Randomness")]
         private int _bulletType;
         [SerializeField] private GameObject[] bulletPrefab;
 
         [Header("Gun")]
         [SerializeField] private Sprite[] gunSprites;
 
-        [Header("Reloading")] 
+        [Header("Reloading")]
         private bool _reloading;
         [SerializeField] private AudioSource reloadSound;
         [SerializeField] private float reloadTime = 2f;
-        
+
         [Header("UI")]
         [SerializeField] private Image[] slotMachineUIImages;
         [SerializeField] private Animator[] slotMachineUIAnimator;
@@ -101,7 +101,7 @@ namespace Casino.Player
             nozzle.up = _direction;
             UpdateSprite(_direction);
         }
-        
+
         private void GetRandomBulletType()
         {
             foreach (Animator animator in slotMachineUIAnimator)
@@ -110,7 +110,7 @@ namespace Casino.Player
                 animator.SetBool("rolling", true);
             }
             string[] possibilities = { "y", "r", "b" };
-            string combination = possibilities[Random.Range(0,3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0,3)];
+            string combination = possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0, 3)] + possibilities[Random.Range(0, 3)];
 
             int yellowCount = combination.Count(s => s == 'y');
             int redCount = combination.Count(s => s == 'r');
@@ -126,25 +126,27 @@ namespace Casino.Player
                 animator.SetBool("rolling", false);
                 animator.enabled = false;
             }
-            if(yellowCount == 2)
+            if (yellowCount == 2)
             {
                 _bulletType = 1;
             }
-            else if(redCount == 2)
+            else if (redCount == 2)
             {
                 _bulletType = 2;
-            } 
-            else if(blueCount == 2)
+            }
+            else if (blueCount == 2)
             {
                 _bulletType = 3;
             }
             else if (yellowCount == 3)
             {
                 _bulletType = 4;
-            } else if(redCount == 3)
+            }
+            else if (redCount == 3)
             {
                 _bulletType = 5;
-            } else if (blueCount == 3)
+            }
+            else if (blueCount == 3)
             {
                 _bulletType = 6;
             }
@@ -171,7 +173,6 @@ namespace Casino.Player
             angle = (angle + 360f) % 360f;
 
             Sprite sprite = null;
-            int order = 0;
 
             if (angle >= 337.5f || angle < 22.5f)       // Right
                 sprite = gunSprites[0];
@@ -190,8 +191,8 @@ namespace Casino.Player
             else                                        // Down-Right
                 sprite = gunSprites[7];
 
-            //order = (angle >= 67.5f && angle <= 247.5f) ? 5 : -1;
-            //_spriteRenderer.sortingOrder = order;
+            _spriteRenderer.sortingOrder =
+    (angle > 90f && angle < 270f) ? -1 : 4;
 
             _spriteRenderer.sprite = sprite;
 
